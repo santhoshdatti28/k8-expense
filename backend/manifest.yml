@@ -13,5 +13,23 @@ spec:
     metadata:
       labels:
         app: backend
-        project: expense 
-    
+        project: expense
+    spec:
+      containers:
+      - name: backend
+        image: santhoshdatti/backend:1.0.0 
+
+---
+
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name: backend 
+spec:
+  selector: 
+    app: backend 
+    project: expense
+  ports: 
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
